@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
 const PhoneSection = () => {
-  return (
-    <Container>PhoneSection</Container>
-  )
-}
+  return (<Container name="threeD">PhoneSection</Container>);
+};
 
-const Container=styled.div`
-  width: 100wv;
+const Container = styled.div`
+  max-width: 100vw;
   min-height: 100vh;
   scroll-snap-align: start;
-  background:blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blue;
+`;
 
-`
-
-export default PhoneSection
+export default PhoneSection;
