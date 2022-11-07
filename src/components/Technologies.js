@@ -1,50 +1,57 @@
 import React from "react";
 import styled, { keyframes, ThemeProvider } from "styled-components";
+import TechnoItem from "./PageComponents/Technologies/TechnoItem";
+import { TechnologyList } from "./PageComponents/Technologies/TechnologyList";
 
 const Technologies = () => {
+
+
   return (
     <Container name="techno" id="techno">
-      <MainWrapper>asdf</MainWrapper>
+      <StyledText>What I use</StyledText>
+      <MainWrapper>
+        {TechnologyList.map((technology,i)=>{
+          return  <TechnoItem key={i} id={i}  {...technology} />
+        })}
+      </MainWrapper>
     </Container>
   );
 };
 
-const BgAnimation=keyframes`
+const BgAnimation = keyframes`
   0%{
-    -webkit-filter: hue-rotate(0deg);
+    background-position: 0 0;
   }
   50%{
-    -webkit-filter: hue-rotate(100deg);
+    background-position: 100% 0;
   }
   100%{
-    -webkit-filter: hue-rotate(0deg);
+    background-position: 0 0;
   }
 
 
-`
+`;
 
 const Container = styled.div`
-  max-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: hsla(261, 84%, 5%, 1);
-  background-color: hsla(261, 84%, 5%, 1);
-  background-color: hsla(261, 84%, 5%, 1);
-  background-image: radial-gradient(
-      at 50% 65%,
-      hsla(239, 29%, 27%, 0.82) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 86% 31%, hsla(263, 34%, 41%, 1) 0px, transparent 50%),
-    radial-gradient(at 89% 77%, hsla(254, 36%, 38%, 1) 0px, transparent 50%),
-    radial-gradient(at 69% 15%, hsla(210, 42%, 15%, 1) 0px, transparent 50%),
-    radial-gradient(at 9% 86%, hsla(278, 47%, 55%, 1) 0px, transparent 50%),
-    radial-gradient(at 12% 11%, hsla(220, 76%, 63%, 1) 0px, transparent 50%);
-    animation: ${BgAnimation} 3s linear infinite;
+  background-size: 400%;
+  background-image: linear-gradient(
+    335deg,
+    rgba(96, 69, 140, 1) 0%,
+    rgba(33, 150, 243, 1) 20%,
+    rgba(155, 86, 194, 1) 44%,
+    rgba(78, 62, 132, 1) 62%,
+    rgba(89, 137, 232, 1) 84%,
+    rgba(238, 130, 238, 1) 100%
+  );
+
+  animation: ${BgAnimation} 8s linear infinite;
 `;
 
 const MainWrapper = styled.div`
@@ -53,9 +60,35 @@ const MainWrapper = styled.div`
   left: 50px;
   bottom: 15px;
   right: 15px;
-  background-color: #432C7A;
-  border-radius:5px;
-
+  background-color: rgba(13, 8, 17,0.3);
+  border-radius: 5px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap:3rem;
+  padding:100px 0;
 `;
+
+const Shine=keyframes`
+  to {
+      background-position: 200% center;
+    }
+
+`
+
+const StyledText=styled.h1`
+  background: linear-gradient(to right, rgba(238, 130, 238, 1) 20%,  rgba(33, 150, 243, 1) 80%);
+  background-size: 200% auto; 
+  color: #000;
+  background-clip: text;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self: flex-start;
+  animation: ${Shine} 5s linear infinite;
+
+
+`
 
 export default Technologies;

@@ -46,9 +46,9 @@ const Sidebar = () => {
   );
 };
 
-const Container = styled.aside`
+const Container = styled.div`
   width: 2.4rem;
-  height: 100vh;
+  height: 100%;
   background: ${(props) => props.theme.second_bg};
   color: ${(props) => props.theme.text_color};
   display: flex;
@@ -65,12 +65,15 @@ const Container = styled.aside`
   }
 
   ul {
+    height:100vh;
     margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 0 0 0 5px;
+    
+    
 
     li {
       list-style: none;

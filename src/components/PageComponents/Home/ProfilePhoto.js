@@ -51,7 +51,7 @@ const StyledBorder = styled.div`
   background: -webkit-linear-gradient(to right, #240b36, #c31432);
   background: linear-gradient(to right, #240b36, #c31432);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  animation: ${TextAnimation} 15s infinite;
+  animation: ${TextAnimation} 10s infinite ease-in-out;
   box-shadow: 10px 10px 5px 0px rgba(36, 11, 54, 1);
 -webkit-box-shadow: 10px 10px 5px 0px rgba(36, 11, 54, 1);
 -moz-box-shadow: 10px 10px 5px 0px rgba(36, 11, 54, 1);
