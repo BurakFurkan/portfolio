@@ -99,7 +99,7 @@ const TextAnimationSmall = keyframes`
 `;
 
 const StyledP = styled.p`
-  width: 600px;
+  width: 300px;
   display: flex;
   justify-content: flex-start;
   align-items: space-evenly;
