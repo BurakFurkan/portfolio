@@ -5,11 +5,10 @@ import ThreeWrapper from "./PhoneSection/ThreeWrapper";
 const PhoneSection = () => {
   return (
     <Container name="threeD">
-    <StyledText>You want this at your app?</StyledText>
+    <StyledText>Do you want this at your app?</StyledText>
       <SceneWrapper>
         <ThreeWrapper />
       </SceneWrapper>
-      
     </Container>
   );
 };
@@ -46,6 +45,8 @@ const SceneWrapper=styled.div`
   height: 60%;
   background-color:rgba(0,0,0,0.1);
   border-radius:7px;
+  box-shadow: 1px 1px 3px 1px rgba(36, 11, 54, 1);
+
 
   @media (max-width: 1028px) {
     height: 50%;
@@ -53,16 +54,19 @@ const SceneWrapper=styled.div`
 `
 
 const StyledText=styled.span`
-  width: 250px;
+  width: 280px;
   height:200px;
   color:${(props)=>props.theme.text_color2};
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  align-self:flex-start;
   font-size: 3rem;
+  margin-top: 120px;
 
   @media (max-width: 1028px) {
     margin-left:50px;
+    align-self:center;
   }
 
 `

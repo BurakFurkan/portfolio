@@ -20,8 +20,8 @@ export default function MainText() {
           <span>I'm a</span>
           <AnimatedText>
             <span>FrontEnd Developer</span>
-            <span>Designer</span>
-            <span>Backend Developer</span>
+            <span>Lifelong Learner</span>
+            <span>Passionate</span>
             <span>Human</span>
           </AnimatedText>
         </StyledP>

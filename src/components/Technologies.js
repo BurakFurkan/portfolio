@@ -4,14 +4,12 @@ import TechnoItem from "./PageComponents/Technologies/TechnoItem";
 import { TechnologyList } from "./PageComponents/Technologies/TechnologyList";
 
 const Technologies = () => {
-
-
   return (
     <Container name="techno" id="techno">
       <StyledText>What I use</StyledText>
       <MainWrapper>
-        {TechnologyList.map((technology,i)=>{
-          return  <TechnoItem key={i} id={i}  {...technology} />
+        {TechnologyList.map((technology, i) => {
+          return <TechnoItem key={i} id={i} {...technology} />;
         })}
       </MainWrapper>
     </Container>
@@ -60,26 +58,30 @@ const MainWrapper = styled.div`
   left: 50px;
   bottom: 15px;
   right: 15px;
-  background-color: rgba(13, 8, 17,0.3);
+  background-color: rgba(13, 8, 17, 0.3);
   border-radius: 5px;
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap:3rem;
-  padding:100px 0;
+  gap: 3rem;
+  padding: 100px 0;
 `;
 
-const Shine=keyframes`
+const Shine = keyframes`
   to {
       background-position: 200% center;
     }
 
-`
+`;
 
-const StyledText=styled.h1`
-  background: linear-gradient(to right, rgba(238, 130, 238, 1) 20%,  rgba(33, 150, 243, 1) 80%);
-  background-size: 200% auto; 
+const StyledText = styled.h1`
+  background: linear-gradient(
+    to right,
+    rgba(238, 130, 238, 1) 20%,
+    rgba(33, 150, 243, 1) 80%
+  );
+  background-size: 200% auto;
   color: #000;
   background-clip: text;
   text-transform: uppercase;
@@ -87,8 +89,7 @@ const StyledText=styled.h1`
   -webkit-text-fill-color: transparent;
   align-self: flex-start;
   animation: ${Shine} 5s linear infinite;
-
-
-`
+  text-shadow: 1px 2px 0px inherit;
+`;
 
 export default Technologies;
