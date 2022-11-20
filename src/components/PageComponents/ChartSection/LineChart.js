@@ -1,10 +1,12 @@
 import React from 'react';
-import styled, { ThemeProvider } from "styled-components";
+import styled, { useTheme } from "styled-components";
+import {t} from 'i18next';
 import Chart from 'chart.js/auto';
 import { Line } from 'react-chartjs-2';
 
 
 const LineChart = () => {
+  const theme=useTheme();
 
   const options = {
     responsive: true,
@@ -15,27 +17,27 @@ const LineChart = () => {
       },
       title: {
         display: true,
-        text: 'Success/Boredom Chart',
+        text: t('Success/Boredom Chart'),
       },
     },
   };
   
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  const labels = [t('January'), t('February'), t('March'), t('April'), t('May'), t('June'), t('July')];
 
    const data = {
     labels:labels,
     datasets: [
       {
-        label: 'Success',
+        label: t('Success'),
         data: [15,28,43,56,77,88,99],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: theme.chart_dark_pink_border,
+        backgroundColor: theme.chart_dark_pink,
       },
       {
-        label: 'Boredom',
+        label: t('Boredom'),
         data: [-5,-8,-36,-46,-66,-65,-70],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: theme.chart_dark_blue_border,
+        backgroundColor: theme.chart_dark_blue,
       },
     ],
   };
@@ -49,7 +51,7 @@ const Container=styled.div`
 
     padding:10px;
     border-radius:7px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: ${(props)=>props.theme.charts_bg};
     display: flex;
     justify-content: center;
     align-items: center;

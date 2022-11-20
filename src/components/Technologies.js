@@ -1,13 +1,19 @@
 import React from "react";
-import styled, { keyframes, ThemeProvider } from "styled-components";
+import styled, { keyframes } from "styled-components";
+import {t} from 'i18next';
 import TechnoItem from "./PageComponents/Technologies/TechnoItem";
 import { TechnologyList } from "./PageComponents/Technologies/TechnologyList";
+import { motion } from "framer-motion";
 
 const Technologies = () => {
   return (
     <Container name="techno" id="techno">
-      <StyledText>What I use</StyledText>
-      <MainWrapper>
+      <StyledText>{t("What I use")}</StyledText>
+      <MainWrapper
+        initial={{ y: "100px", opacity: 0 }}
+        animate={{ y: "0", opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         {TechnologyList.map((technology, i) => {
           return <TechnoItem key={i} id={i} {...technology} />;
         })}
@@ -41,24 +47,24 @@ const Container = styled.div`
   background-size: 400%;
   background-image: linear-gradient(
     335deg,
-    rgba(96, 69, 140, 1) 0%,
-    rgba(33, 150, 243, 1) 20%,
-    rgba(155, 86, 194, 1) 44%,
-    rgba(78, 62, 132, 1) 62%,
-    rgba(89, 137, 232, 1) 84%,
-    rgba(238, 130, 238, 1) 100%
+    ${(props)=>props.theme.techno_bg_image1},
+    ${(props)=>props.theme.techno_bg_image2},
+    ${(props)=>props.theme.techno_bg_image3},
+    ${(props)=>props.theme.techno_bg_image4},
+    ${(props)=>props.theme.techno_bg_image5},
+    ${(props)=>props.theme.techno_bg_image6}
   );
 
   animation: ${BgAnimation} 8s linear infinite;
 `;
 
-const MainWrapper = styled.div`
+const MainWrapper = styled(motion.div)`
   position: absolute;
   top: 15px;
   left: 50px;
   bottom: 15px;
   right: 15px;
-  background-color: rgba(13, 8, 17, 0.3);
+  background-color: ${(props)=>props.theme.techno_main_bg};
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -78,13 +84,12 @@ const Shine = keyframes`
 const StyledText = styled.h1`
   background: linear-gradient(
     to right,
-    rgba(238, 130, 238, 1) 20%,
-    rgba(33, 150, 243, 1) 80%
+    ${(props)=>props.theme.techno_colored_text1},
+    ${(props)=>props.theme.techno_colored_text2}
   );
   background-size: 200% auto;
   color: #000;
   background-clip: text;
-  text-transform: uppercase;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   align-self: flex-start;

@@ -1,30 +1,46 @@
-import React, { useRef, useEffect } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import ViewInArOutlinedIcon from "@mui/icons-material/ViewInArOutlined";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
+import MusicPlayerSlider from "./PageComponents/Sidebar/MusicPlayer";
+import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
+import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
+import {t} from 'i18next';
 import { Link } from "react-scroll";
-import { HashLink } from "react-router-hash-link";
+import ThemePicker from "./PageComponents/Sidebar/ThemePicker";
+import LanguagePicker from "./PageComponents/Sidebar/LanguagePicker";
 
-const Sidebar = () => {
+const Sidebar = ({ setActiveTheme, setActiveLang }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [themeNumber, setThemeNumber] = useState(1);
+  const [lang, setLang] = useState("en");
+
   return (
-    <Container>
+    <Container
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+    >
       <ul>
         <MenuIcon style={{ padding: "3px" }} />
         <li>
           <StyledLink to="home" smooth={true}>
             <HomeOutlinedIcon />
             <StyledBr />
-            Home
+            {t("Home")}
           </StyledLink>
         </li>
         <li>
           <StyledLink to="techno" smooth={true}>
             <ScienceOutlinedIcon />
             <StyledBr />
-            Technologies
+            {t("Technologies")}
           </StyledLink>
         </li>
         <li>
@@ -38,10 +54,21 @@ const Sidebar = () => {
           <StyledLink to="chart" smooth={true} duration={500}>
             <TrendingUpOutlinedIcon />
             <StyledBr />
-            Charts
+            {t("Charts")}
           </StyledLink>
         </li>
       </ul>
+      {isHovered ? (
+        <ThemePicker setActiveTheme={setActiveTheme} themeNumber={themeNumber} setThemeNumber={setThemeNumber} />
+      ) : (
+        <PaletteOutlinedIcon style={{ marginLeft: "5px" }} />
+      )}
+      {isHovered ? (
+        <LanguagePicker setActiveLang={setActiveLang} lang={lang} setLang={setLang} />
+      ) : (
+        <TranslateOutlinedIcon style={{ marginLeft: "5px" }} />
+      )}
+      <MusicPlayerSlider ishovered={isHovered} />
     </Container>
   );
 };
@@ -49,9 +76,12 @@ const Sidebar = () => {
 const Container = styled.div`
   width: 2.4rem;
   height: 100%;
-  background: ${(props) => props.theme.second_bg};
-  color: ${(props) => props.theme.text_color};
+  color: ${(props) => props.theme.text_color2};
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -61,19 +91,20 @@ const Container = styled.div`
   z-index: 999;
 
   &:hover {
-    width: 166px;
+    width: 220px;
+    background: ${(props) => props.theme.sidebar_bg_hover};
   }
 
   ul {
-    height:100vh;
-    margin-top: 80px;
+    width: 90%;
+    height: 310px;
+    margin: 30px 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    gap: 2rem;
     padding: 0 0 0 5px;
-    
-    
 
     li {
       list-style: none;
@@ -89,7 +120,7 @@ const Container = styled.div`
       transition: 0.1s ease-out;
 
       &:hover {
-        background-color: ${(props) => props.theme.third_bg};
+        background-color: ${(props) => props.theme.sidebar_item_hover_bg};
       }
     }
   }

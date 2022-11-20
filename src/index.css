@@ -9,6 +9,12 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: "RobotReavers";   /*Can be any text*/
+  src: local("RobotReavers"),
+    url("./fonts/robot/RobotReavers.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans", sans-serif;
@@ -18,6 +24,8 @@ body {
   width: 100vw;
   padding: 0;
   scroll-behavior:smooth;
+
+  
 }
 body::-webkit-scrollbar {
   display: none;

@@ -1,9 +1,11 @@
 import React from 'react';
-import styled, { ThemeProvider } from "styled-components";
+import styled, { useTheme } from "styled-components";
+import {t} from 'i18next';
 import Chart from 'chart.js/auto';
 import { Radar } from 'react-chartjs-2';
 
 const RadarChart = () => {
+  const theme=useTheme();
 
   const options = {
     responsive: true,
@@ -14,19 +16,19 @@ const RadarChart = () => {
       },
       title: {
         display: true,
-        text: 'Activity Hours',
+        text: t('Qualifications'),
       },
     },
   };
 
   const myData = {
-    labels: ['Communication Skills', 'Team Work', 'Good Manners', 'Curiosity', 'Passion', 'Result Orientation'],
+    labels: [t('Communication Skills'), t('Team Work'), t('Good Manners'), t('Curiosity'), t('Passion'), t('Result Orientation')],
     datasets: [
       {
         label: '%',
-        data: [90, 90, 100, 90, 85, 90],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
+        data: [88, 90, 100, 92, 94, 96],
+        backgroundColor: theme.chart_light_blue,
+        borderColor: theme.chart_light_blue_border,
         borderWidth: 1,
       },
     ],
@@ -41,7 +43,7 @@ const Container=styled.div`
 
     padding:10px;
     border-radius:7px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: ${(props)=>props.theme.charts_bg};
     display: flex;
     justify-content: center;
     align-items: center;

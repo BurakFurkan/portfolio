@@ -28,17 +28,13 @@ const Container = styled.div`
   grid-template-rows: repeat(6, 105px);
   gap: 0.8rem;
   padding: 10px 10px 10px 50px;
-  background-color: hsla(261, 84%, 5%, 1);
-  background-image: radial-gradient(
-      at 65% 50%,
-      hsla(239, 29%, 27%, 0.82) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 86% 31%, hsla(263, 34%, 41%, 1) 0px, transparent 50%),
-    radial-gradient(at 89% 77%, hsla(254, 36%, 38%, 1) 0px, transparent 50%),
-    radial-gradient(at 69% 15%, hsla(210, 42%, 15%, 1) 0px, transparent 50%),
-    radial-gradient(at 9% 86%, hsla(278, 47%, 55%, 1) 0px, transparent 50%),
-    radial-gradient(at 12% 11%, hsla(220, 76%, 63%, 1) 0px, transparent 50%);
+  background-color: hsla(${(props)=>props.theme.bg_color});
+  background-image: ${(props)=>props.theme.bg_image1},
+  ${(props)=>props.theme.bg_image2},
+  ${(props)=>props.theme.bg_image3},
+  ${(props)=>props.theme.bg_image4},
+  ${(props)=>props.theme.bg_image5},
+  ${(props)=>props.theme.bg_image6};
 
   @media (max-width: 1028px) {
     height:200vh;

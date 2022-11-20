@@ -1,9 +1,11 @@
 import React from 'react';
-import styled, { ThemeProvider } from "styled-components";
+import styled, { useTheme } from "styled-components";
+import {t} from 'i18next';
 import Chart from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 
 const DoughnutChart = () => {
+  const theme=useTheme();
 
   const options = {
     responsive: true,
@@ -14,33 +16,33 @@ const DoughnutChart = () => {
       },
       title: {
         display: true,
-        text: 'Activity Hours',
+        text: t('Activity Hours'),
       },
     },
   };
 
 
   const myData = {
-    labels: ['Code', 'Eat', 'Sleep', 'Sport', 'Fun', 'Learn'],
+    labels: [t('Code'), t('Eat'), t('Sleep'), t('Sport'), t('Fun'), t('Learn')],
     datasets: [
       {
         label: '# of Votes',
         data: [8, 1, 8, 2, 2, 2],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
+          theme.chart_light_pink,
+          theme.chart_light_blue,
+          theme.chart_light_yellow,
+          theme.chart_light_green,
+          theme.chart_light_purple,
+          theme.chart_light_orange,
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
+          theme.chart_light_pink_border,
+          theme.chart_light_blue_border,
+          theme.chart_light_yellow_border,
+          theme.chart_light_green_border,
+          theme.chart_light_purple_border,
+          theme.chart_light_orange_border,
         ],
         borderWidth: 1,
       },
@@ -56,7 +58,7 @@ const Container=styled.div`
 
     padding:10px;
     border-radius:7px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: ${(props)=>props.theme.charts_bg};
     display: flex;
     justify-content: center;
     align-items: center;

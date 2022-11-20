@@ -6,7 +6,7 @@ source: https://sketchfab.com/3d-models/phone-5c53e579e1ec49d0a68a380316c252dc
 title: Phone
 */
 
-import React, { useRef } from 'react'
+import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {

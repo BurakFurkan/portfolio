@@ -14,47 +14,47 @@ import styledIcon from "../../../assets/styled.png";
 export  const TechnologyList =[
     {
         "name":"HTML5",
-        "src":{htmlIcon}
+        "src":htmlIcon
     },
     {
         "name":"CSS3",
-        "src":{cssIcon}
+        "src":cssIcon
     },
     {
         "name":"Bootstrap",
-        "src":{bootstrapIcon}
+        "src":bootstrapIcon
     },
     {
         "name":"Javascript",
-        "src":{jsIcon}
+        "src":jsIcon
     },
     {
         "name":"Jquery",
-        "src":{jqueryIcon}
+        "src":jqueryIcon
     },
     {
         "name":"Material UI",
-        "src":{materialIcon}
+        "src":materialIcon
     },
     {
         "name":"NPM",
-        "src":{npmIcon}
+        "src":npmIcon
     },
     {
         "name":"React",
-        "src":{reactIcon}
+        "src":reactIcon
     },
     {
         "name":"Redux Toolkit",
-        "src":{reduxIcon}
+        "src":reduxIcon
     },
     {
         "name":"SASS",
-        "src":{sassIcon}
+        "src":sassIcon
     },
     {
         "name":"Styled Components",
-        "src":{styledIcon}
+        "src":styledIcon
     },
 
 

@@ -10,7 +10,7 @@ function ThreeWrapper() {
       <Suspense fallback={null}>
         <OrbitControls />
         <ambientLight intensity={0.5} />
-        <PhoneModel position={[0, -35, 0]} scale={1.5} />
+        <PhoneModel position={[0, -45, 0]} scale={1.5} />
       </Suspense>
     </Canvas>
   );

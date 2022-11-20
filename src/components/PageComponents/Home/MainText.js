@@ -1,32 +1,51 @@
 import React from "react";
-import styled, { keyframes, ThemeProvider } from "styled-components";
+import styled, { keyframes} from "styled-components";
+import {t} from 'i18next';
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Tooltip from "@mui/material/Tooltip";
 import { useReward } from "react-rewards";
+import { motion } from "framer-motion";
 
 export default function MainText() {
-  const { reward:reward1, isAnimating:isAnimating1 } = useReward("rewardId1", "confetti");
-  const { reward:reward2, isAnimating:isAnimating2 } = useReward("rewardId2", "confetti");
-  const { reward:reward3, isAnimating:isAnimating3 } = useReward("rewardId3", "confetti");
+  const { reward: reward1, isAnimating: isAnimating1 } = useReward(
+    "rewardId1",
+    "confetti"
+  );
+  const { reward: reward2, isAnimating: isAnimating2 } = useReward(
+    "rewardId2",
+    "confetti"
+  );
+  const { reward: reward3, isAnimating: isAnimating3 } = useReward(
+    "rewardId3",
+    "confetti"
+  );
 
   return (
     <Container>
-      <TextWrapper>
-        <p>Hi,</p>
-        <p>I'm Burak Furkan Tenekeci</p>
+      <TextWrapper
+        initial={{ x: "-100px", opacity: 0 }}
+        animate={{ x: "0", opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <p>{t("hi")}</p>
+        <p>{t("I'm")} Burak Furkan Tenekeci</p>
         <StyledP>
-          <span>I'm a</span>
+          <span>{t("I'm a")}</span>
           <AnimatedText>
-            <span>FrontEnd Developer</span>
-            <span>Lifelong Learner</span>
-            <span>Passionate</span>
-            <span>Human</span>
+            <span>{t("FrontEnd Developer")}</span>
+            <span>{t("Lifelong Learner")}</span>
+            <span>{t("Team Player")}</span>
+            <span>{t("Human")}</span>
           </AnimatedText>
         </StyledP>
       </TextWrapper>
-      <Socials>
+      <Socials
+        initial={{ y: "100px", opacity: 0 }}
+        animate={{ y: "0", opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <Tooltip title="https://www.github.com/BurakFurkan" arrow>
           <a
             href="https://www.github.com/BurakFurkan"
@@ -85,7 +104,7 @@ const Container = styled.div`
   }
 `;
 
-const TextWrapper = styled.div`
+const TextWrapper = styled(motion.div)`
   width: 100%;
   height: 280px;
   color: ${(props) => props.theme.text_color2};
@@ -94,7 +113,7 @@ const TextWrapper = styled.div`
     font-weight: 600;
 
     @media (max-width: 1028px) {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 500;
     }
   }
@@ -146,16 +165,20 @@ const StyledP = styled.p`
   align-items: space-evenly;
   gap: 7px;
 
+  @media (max-width: 1028px) {
+      gap:0;
+    }
+
   span {
-    min-width: 80px;
+    min-width: 120px;
     @media (max-width: 1028px) {
-      min-width: 55px;
+      min-width: 70px;
     }
   }
 `;
 
 const AnimatedText = styled.span`
-  min-width: 330px !important;
+  min-width: 380px !important;
   height: 44px;
   overflow: hidden;
   display: flex;
@@ -172,28 +195,28 @@ const AnimatedText = styled.span`
   span {
     padding: 0 5px;
     &:nth-child(1) {
-      background-color: #240b36;
+      background-color: ${(props) => props.theme.animated_text1};
       animation: ${TextAnimation} 8000ms infinite;
       @media (max-width: 1028px) {
         animation: ${TextAnimationSmall} 8000ms infinite;
       }
     }
     &:nth-child(2) {
-      background-color: #c31432;
+      background-color:${(props) => props.theme.animated_text2};
       animation: ${TextAnimation} 8000ms infinite;
       @media (max-width: 1028px) {
         animation: ${TextAnimationSmall} 8000ms infinite;
       }
     }
     &:nth-child(3) {
-      background-color: #ad5389;
+      background-color: ${(props) => props.theme.animated_text3};
       animation: ${TextAnimation} 8000ms infinite;
       @media (max-width: 1028px) {
         animation: ${TextAnimationSmall} 8000ms infinite;
       }
     }
     &:nth-child(4) {
-      background-color: #3c1053;
+      background-color: ${(props) => props.theme.animated_text4};
       animation: ${TextAnimation} 8000ms infinite;
       @media (max-width: 1028px) {
         animation: ${TextAnimationSmall} 8000ms infinite;
@@ -202,12 +225,13 @@ const AnimatedText = styled.span`
   }
 `;
 
-const Socials = styled.div`
+const Socials = styled(motion.div)`
   width: 280px;
   height: 100px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  align-self: flex-start;
 
   a {
     cursor: pointer;

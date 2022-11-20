@@ -1,9 +1,11 @@
 import React from 'react';
-import styled, { ThemeProvider } from "styled-components";
+import styled, { useTheme } from "styled-components";
+import {t} from 'i18next';
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 
 const BarChart = () => {
+  const theme=useTheme();
 
   const options = {
     responsive: true,
@@ -14,20 +16,20 @@ const BarChart = () => {
       },
       title: {
         display: true,
-        text: 'Daily Work Hours',
+        text: t('Daily Work Hours'),
       },
     },
   };
   
-  const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const labels = [t('Monday'), t('Tuesday'), t('Wednesday'), t('Thursday'), t('Friday'), t('Saturday'), t('Sunday')];
   
   const myData = {
     labels,
     datasets: [
       {
-        label: 'Hour',
+        label: t('Hour'),
         data: [8,8,8,8,8,3,3],
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: theme.chart_dark_pink,
       }
     ],
   };
@@ -41,7 +43,7 @@ const Container=styled.div`
 
     padding:10px;
     border-radius:7px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: ${(props)=>props.theme.charts_bg};
     display: flex;
     justify-content: center;
     align-items: center;

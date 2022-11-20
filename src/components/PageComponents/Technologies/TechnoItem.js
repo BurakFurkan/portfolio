@@ -5,8 +5,8 @@ import {motion} from "framer-motion";
 export default function TechnoItem({name,src,id}) {
   return (
     <Container animate={{y:"-15px"}} transition={{ repeat: Infinity,
-        repeatType: 'reverse', duration: 2, delay:((id%2)*1) }}> 
-    <StyledImg src={Object.values(src)[0]} alt={name} />
+        repeatType: 'reverse', duration: 2, delay:((id%2)*2) }} > 
+    <StyledImg src={src} alt={name} />
     <StyledText>{name}</StyledText>
     </Container>
   )
@@ -29,14 +29,14 @@ const Container=styled(motion.div)`
     width:180px;
     height: 180px;
     background-size: 400%;
-  background-image: linear-gradient(
+    background-image: linear-gradient(
     335deg,
-    rgba(96, 69, 140, 1) 0%,
-    rgba(33, 150, 243, 1) 20%,
-    rgba(155, 86, 194, 1) 44%,
-    rgba(78, 62, 132, 1) 62%,
-    rgba(89, 137, 232, 1) 84%,
-    rgba(238, 130, 238, 1) 100%
+    ${(props)=>props.theme.techno_bg_image1},
+    ${(props)=>props.theme.techno_bg_image2},
+    ${(props)=>props.theme.techno_bg_image3},
+    ${(props)=>props.theme.techno_bg_image4},
+    ${(props)=>props.theme.techno_bg_image5},
+    ${(props)=>props.theme.techno_bg_image6}
   );
 
   animation: ${BgAnimation} 8s linear infinite;
