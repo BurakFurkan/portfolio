@@ -26,8 +26,8 @@ const BgAnimation = keyframes`
 `;
 
 const Container=styled(motion.div)`
-    width:180px;
-    height: 180px;
+    width:70px;
+    height: 70px;
     background-size: 400%;
     background-image: linear-gradient(
     335deg,
@@ -48,9 +48,18 @@ const Container=styled(motion.div)`
     gap:1rem;
     color:${(props)=>props.theme.text_color2};
 
-    @media (max-width: 1028px) {
-    width:4rem;
-    height: 4rem;
+    @media (min-width: 425px) {
+    width:90px;
+    height: 90px;
+  }
+    @media (min-width: 768px) {
+    width:120px;
+    height: 120px;
+  }
+
+    @media (min-width: 1200px) {
+    width:180px;
+    height: 180px;
     gap:0.5rem;
   }
 
@@ -58,23 +67,34 @@ const Container=styled(motion.div)`
 
 
 const StyledImg=styled.img`
-    width: 4rem;
-    height: 4rem;
+    width: 1.8rem;
+    height: 1.8rem;
     object-fit: contain;
 
-    @media (max-width: 1028px) {
-    width:1.5rem;
-    height: 1.5rem;
+    @media (min-width: 425px) {
+    width:1.8rem;
+    height: 1.8rem;
+  }
+  @media (min-width: 768px) {
+    width:64px;
+    height: 64px;
+  }
+    @media (min-width: 1200px) {
+    width:4rem;
+    height: 4rem;
   }
 
 `
 
 const StyledText=styled.span`
-    font-size: 1rem;
+    font-size: 0.5rem;
     text-align: center;
 
-    @media (max-width: 1028px) {
+    @media (min-width: 425px) {
     font-size:0.6rem;
+  }
+    @media (min-width: 1200px) {
+    font-size:0.8rem;
   }
 
 

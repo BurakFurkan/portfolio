@@ -8,7 +8,7 @@ import Glitch3 from "../../../assets/glitch3.png";
 
 export default function ProfilePhoto() {
   return (
-    <Container >
+    <Container>
       <StyledBorder
         initial={{ x: "100px", opacity: 0 }}
         animate={{ x: "0", opacity: 1 }}
@@ -28,9 +28,12 @@ const Container = styled.div`
   align-items: center;
   margin-top: 1rem;
 
+
   @media (max-width: 1028px) {
     width: 80vw;
     height: 50vh;
+    justify-content: flex-start;
+    align-items: center;
   }
 `;
 const TextAnimation = keyframes`
@@ -51,13 +54,14 @@ const StyledBorder = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props)=>props.theme.profile_bg};
-  background: ${(props)=>props.theme.wbgradient_profile_bg};
-  background: ${(props)=>props.theme.gradient_profile_bg};
+  background: ${(props) => props.theme.profile_bg};
+  background: ${(props) => props.theme.wbgradient_profile_bg};
+  background: ${(props) => props.theme.gradient_profile_bg};
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   animation: ${TextAnimation} 10s infinite ease-in-out;
   box-shadow: 10px 10px 5px 0px ${(props) => props.theme.profile_bg_shadow};
-  -webkit-box-shadow: 10px 10px 5px 0px ${(props) => props.theme.profile_bg_shadow};
+  -webkit-box-shadow: 10px 10px 5px 0px
+    ${(props) => props.theme.profile_bg_shadow};
   -moz-box-shadow: 10px 10px 5px 0px ${(props) => props.theme.profile_bg_shadow};
 `;
 

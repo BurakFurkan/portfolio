@@ -28,6 +28,13 @@ const Container = styled.div`
   ${(props)=>props.theme.bg_image6};
     
 
+  @media (max-width: 428px) {
+    flex-direction: column-reverse;
+    align-content: center;
+    align-items: center;
+    padding-left: 50px;
+    justify-content: center;
+  }
   @media (max-width: 1028px) {
     flex-direction: column-reverse;
     align-content: flex-start;

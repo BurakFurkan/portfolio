@@ -8,7 +8,7 @@ import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import MusicPlayerSlider from "./PageComponents/Sidebar/MusicPlayer";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
-import {t} from 'i18next';
+import { t } from "i18next";
 import { Link } from "react-scroll";
 import ThemePicker from "./PageComponents/Sidebar/ThemePicker";
 import LanguagePicker from "./PageComponents/Sidebar/LanguagePicker";
@@ -59,12 +59,20 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
         </li>
       </ul>
       {isHovered ? (
-        <ThemePicker setActiveTheme={setActiveTheme} themeNumber={themeNumber} setThemeNumber={setThemeNumber} />
+        <ThemePicker
+          setActiveTheme={setActiveTheme}
+          themeNumber={themeNumber}
+          setThemeNumber={setThemeNumber}
+        />
       ) : (
         <PaletteOutlinedIcon style={{ marginLeft: "5px" }} />
       )}
       {isHovered ? (
-        <LanguagePicker setActiveLang={setActiveLang} lang={lang} setLang={setLang} />
+        <LanguagePicker
+          setActiveLang={setActiveLang}
+          lang={lang}
+          setLang={setLang}
+        />
       ) : (
         <TranslateOutlinedIcon style={{ marginLeft: "5px" }} />
       )}
@@ -106,6 +114,13 @@ const Container = styled.div`
     gap: 2rem;
     padding: 0 0 0 5px;
 
+    @media (max-width: 425px) {
+      height: 200px;
+      margin: 10px 0 0 0;
+      gap: 0.5rem;
+      justify-content: space-evenly;
+    }
+
     li {
       list-style: none;
       cursor: pointer;
@@ -118,6 +133,7 @@ const Container = styled.div`
       border-radius: 8px;
       padding: 3px;
       transition: 0.1s ease-out;
+      
 
       &:hover {
         background-color: ${(props) => props.theme.sidebar_item_hover_bg};
