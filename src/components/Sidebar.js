@@ -23,15 +23,6 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
       onMouseEnter={() => {
         setIsHovered(true);
       }}
-      onClick={() => {
-        setIsHovered(true);
-      }}
-      onTouchMove={() => {
-        setIsHovered(true);
-      }}
-      onTouchEnd={() => {
-        setIsHovered(false);
-      }}
       onMouseLeave={() => {
         setIsHovered(false);
       }}
@@ -76,9 +67,6 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
       ) : (
         <PaletteOutlinedIcon
           style={{ marginLeft: "5px" }}
-          onClick={() => {
-            setIsHovered(true);
-          }}
         />
       )}
       {isHovered ? (
@@ -90,16 +78,10 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
       ) : (
         <TranslateOutlinedIcon
           style={{ marginLeft: "5px" }}
-          onClick={() => {
-            setIsHovered(true);
-          }}
         />
       )}
       <MusicPlayerSlider
         ishovered={isHovered}
-        onClick={() => {
-          setIsHovered(true);
-        }}
       />
     </Container>
   );
