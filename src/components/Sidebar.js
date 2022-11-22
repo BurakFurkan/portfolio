@@ -23,10 +23,16 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
       onMouseEnter={() => {
         setIsHovered(true);
       }}
-      onMouseLeave={() => {
+      onClick={() => {
+        setIsHovered(true);
+      }}
+      onTouchMove={() => {
+        setIsHovered(true);
+      }}
+      onTouchEnd={() => {
         setIsHovered(false);
       }}
-      onMouseOut={() => {
+      onMouseLeave={() => {
         setIsHovered(false);
       }}
     >
@@ -68,7 +74,12 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
           setThemeNumber={setThemeNumber}
         />
       ) : (
-        <PaletteOutlinedIcon style={{ marginLeft: "5px" }} />
+        <PaletteOutlinedIcon
+          style={{ marginLeft: "5px" }}
+          onClick={() => {
+            setIsHovered(true);
+          }}
+        />
       )}
       {isHovered ? (
         <LanguagePicker
@@ -77,9 +88,19 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
           setLang={setLang}
         />
       ) : (
-        <TranslateOutlinedIcon style={{ marginLeft: "5px" }} />
+        <TranslateOutlinedIcon
+          style={{ marginLeft: "5px" }}
+          onClick={() => {
+            setIsHovered(true);
+          }}
+        />
       )}
-      <MusicPlayerSlider ishovered={isHovered} />
+      <MusicPlayerSlider
+        ishovered={isHovered}
+        onClick={() => {
+          setIsHovered(true);
+        }}
+      />
     </Container>
   );
 };
@@ -102,8 +123,8 @@ const Container = styled.div`
   z-index: 999;
 
   @media (max-width: 425px) {
-      gap: 0.5rem;
-    }
+    gap: 0.5rem;
+  }
 
   &:hover {
     width: 220px;
@@ -138,12 +159,12 @@ const Container = styled.div`
       align-items: center;
       gap: 10px;
       border-radius: 8px;
-      padding: 3px;
+      padding: 5px;
       transition: 0.1s ease-out;
-      
 
       &:hover {
         background-color: ${(props) => props.theme.sidebar_item_hover_bg};
+
       }
     }
   }
@@ -151,7 +172,7 @@ const Container = styled.div`
 
 const StyledBr = styled.div`
   width: 1px;
-  height: 30px;
+  height: 25px;
   background-color: ${(props) => props.theme.text_color2};
 `;
 
