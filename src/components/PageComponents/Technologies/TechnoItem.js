@@ -1,11 +1,11 @@
 import React from 'react';
-import styled, { keyframes, ThemeProvider } from "styled-components";
+import styled, { keyframes} from "styled-components";
 import {motion} from "framer-motion";
 
 export default function TechnoItem({name,src,id}) {
   return (
     <Container animate={{y:"-15px"}} transition={{ repeat: Infinity,
-        repeatType: 'reverse', duration: 2, delay:((id%2)*2) }} > 
+        repeatType: 'reverse', duration: 2, delay:((id % 2) * 2) }} > 
     <StyledImg src={src} alt={name} />
     <StyledText>{name}</StyledText>
     </Container>

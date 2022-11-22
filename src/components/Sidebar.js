@@ -98,6 +98,10 @@ const Container = styled.div`
   transition: 0.25s ease-in-out;
   z-index: 999;
 
+  @media (max-width: 425px) {
+      gap: 0.5rem;
+    }
+
   &:hover {
     width: 220px;
     background: ${(props) => props.theme.sidebar_bg_hover};

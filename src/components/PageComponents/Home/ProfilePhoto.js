@@ -74,8 +74,8 @@ const BgAnimation = keyframes`
 `;
 
 const StyledImg = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 190px;
+  height: 190px;
   animation: ${BgAnimation} 3.75s infinite steps(1);
   background-position: center;
   background-size: cover;

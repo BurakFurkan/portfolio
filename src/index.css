@@ -9,11 +9,6 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: "RobotReavers";   /*Can be any text*/
-  src: local("RobotReavers"),
-    url("./fonts/robot/RobotReavers.ttf") format("truetype");
-}
 
 body {
   margin: 0;

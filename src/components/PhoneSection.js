@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import {t} from 'i18next';
 import ThreeWrapper from "./PhoneSection/ThreeWrapper";
-import "../fonts/robot/RobotReavers.ttf";
 
 const PhoneSection = () => {
   return (
     <Container name="threeD">
-    <StyledText>{t("Do you want this at your app?")}</StyledText>
+    <StyledText>{t("Do you want this in your app?")}</StyledText>
       <SceneWrapper>
         <ThreeWrapper />
       </SceneWrapper>
@@ -57,14 +56,17 @@ const StyledText=styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family:"RobotReavers", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 190px;
 
   @media (max-width: 1028px) {
-    margin-left:0;
+    width: 300px;
+    height:280px;
+    font-size: 2rem;
+    margin:2rem 0 0 0;
     align-self:center;
-    margin-bottom: 0;
     text-align:center;
   }
 

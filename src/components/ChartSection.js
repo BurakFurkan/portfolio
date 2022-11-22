@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import BarChart from "./PageComponents/ChartSection/BarChart";
 import DoughnutChart from "./PageComponents/ChartSection/DoughnutChart";
 import LineChart from "./PageComponents/ChartSection/LineChart";

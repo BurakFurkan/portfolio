@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -87,7 +87,7 @@ export default function MusicPlayerSlider({ ishovered }) {
             width: "200px",
             overflow: "hidden",
             marginTop: "20px",
-            height: "300px",
+            height: "275px",
           }}
         >
           <Widget>
@@ -100,7 +100,7 @@ export default function MusicPlayerSlider({ ishovered }) {
                 height: "180px",
               }}
               sx={{
-                height: "180px",
+                height: "160px",
                 width: "180px",
                 display: "flex",
                 flexDirection: "column",
