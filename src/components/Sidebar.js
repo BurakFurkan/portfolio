@@ -26,6 +26,9 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
       onMouseLeave={() => {
         setIsHovered(false);
       }}
+      onMouseOut={() => {
+        setIsHovered(false);
+      }}
     >
       <ul>
         <MenuIcon style={{ padding: "3px" }} />

@@ -100,7 +100,7 @@ export default function MusicPlayerSlider({ ishovered }) {
                 height: "180px",
               }}
               sx={{
-                height: "160px",
+                height: "180px",
                 width: "180px",
                 display: "flex",
                 flexDirection: "column",
@@ -113,7 +113,7 @@ export default function MusicPlayerSlider({ ishovered }) {
                   src={SongList[songIndex].imgSrc}
                 />
               </CoverImage>
-              <Box sx={{ ml: 1, minWidth: 0 }}>
+              <Box sx={{ ml: 1, minWidth: 0, height: "120px" }}>
                 <Typography
                   variant="caption"
                   color="text.secondary"
@@ -121,10 +121,10 @@ export default function MusicPlayerSlider({ ishovered }) {
                 >
                   {SongList[songIndex].artist}
                 </Typography>
-                <Typography sx={{ fontSize: "10px" }}>
+                <Typography sx={{ fontSize: "8px" }}>
                   <b>{SongList[songIndex].song}</b>
                 </Typography>
-                <Typography letterSpacing={-0.25} sx={{ fontSize: "10px" }}>
+                <Typography letterSpacing={-0.25} sx={{ fontSize: "8px" }}>
                   {SongList[songIndex].album}
                 </Typography>
               </Box>
@@ -133,16 +133,8 @@ export default function MusicPlayerSlider({ ishovered }) {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
-                mt: -2,
-              }}
-            ></Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
                 justifyContent: "center",
-                mt: -1,
+                mt: 0,
               }}
             >
               <IconButton
