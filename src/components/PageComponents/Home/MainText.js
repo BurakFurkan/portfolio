@@ -189,7 +189,7 @@ const AnimatedText = styled.span`
 
   @media (max-width: 1028px) {
     height: 30px;
-    min-width: 230px !important;
+    min-width: 220px !important;
   }
 
   span {

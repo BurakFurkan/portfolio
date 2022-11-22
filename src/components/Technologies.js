@@ -72,6 +72,10 @@ const MainWrapper = styled(motion.div)`
   align-items: center;
   gap: 3rem;
   padding: 100px 0;
+
+  @media (max-width: 360px) {
+    gap: 2rem;
+  }
 `;
 
 const Shine = keyframes`

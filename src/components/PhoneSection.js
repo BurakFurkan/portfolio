@@ -46,6 +46,7 @@ const SceneWrapper=styled.div`
 
   @media (max-width: 1028px) {
     height: 50%;
+    width:50%;
   }
 `
 
@@ -62,8 +63,8 @@ const StyledText=styled.div`
   margin-bottom: 190px;
 
   @media (max-width: 1028px) {
-    width: 300px;
-    height:280px;
+    width: 280px;
+    height:210px;
     font-size: 2rem;
     margin:2rem 0 0 0;
     align-self:center;
