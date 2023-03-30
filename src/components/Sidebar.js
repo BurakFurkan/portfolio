@@ -8,6 +8,7 @@ import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import MusicPlayerSlider from "./PageComponents/Sidebar/MusicPlayer";
 import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
+import DesignServicesOutlinedIcon from '@mui/icons-material/DesignServicesOutlined';
 import { t } from "i18next";
 import { Link } from "react-scroll";
 import ThemePicker from "./PageComponents/Sidebar/ThemePicker";
@@ -44,6 +45,13 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
           </StyledLink>
         </li>
         <li>
+          <StyledLink to="projects" smooth={true}>
+            <DesignServicesOutlinedIcon />
+            <StyledBr />
+            {t("Projects")}
+          </StyledLink>
+        </li>
+        <li>
           <StyledLink to="threeD" smooth={true} duration={500}>
             <ViewInArOutlinedIcon />
             <StyledBr />
@@ -66,7 +74,7 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
         />
       ) : (
         <PaletteOutlinedIcon
-          style={{ marginLeft: "5px" }}
+          style={{ marginLeft: "5px",marginTop:"8px",paddingLeft:"5px" }}
         />
       )}
       {isHovered ? (
@@ -77,11 +85,12 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
         />
       ) : (
         <TranslateOutlinedIcon
-          style={{ marginLeft: "5px" }}
+          style={{ marginLeft: "5px",marginTop:"16px",paddingLeft:"5px" }}
         />
       )}
       <MusicPlayerSlider
         ishovered={isHovered}
+        style={{ marginLeft: "5px",marginTop:"16px",paddingLeft:"5px" }}
       />
     </Container>
   );
@@ -89,13 +98,12 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
 
 const Container = styled.div`
   width: 2.4rem;
-  height: 100%;
   color: ${(props) => props.theme.text_color2};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 2rem;
+  gap: .5rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -115,13 +123,13 @@ const Container = styled.div`
 
   ul {
     width: 90%;
-    height: 310px;
+    min-height: 310px;
     margin: 30px 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1rem;
     padding: 0 0 0 5px;
 
     @media (max-width: 425px) {
@@ -139,7 +147,7 @@ const Container = styled.div`
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       border-radius: 8px;
       padding: 5px;
       transition: 0.1s ease-out;
@@ -154,7 +162,7 @@ const Container = styled.div`
 
 const StyledBr = styled.div`
   width: 1px;
-  height: 25px;
+  height: 20px;
   background-color: ${(props) => props.theme.text_color2};
 `;
 
@@ -164,7 +172,7 @@ const StyledLink = styled(Link)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 `;
 
 export default Sidebar;

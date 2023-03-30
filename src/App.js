@@ -8,6 +8,7 @@ import {en,tr} from "./components/Languages";
 import Sidebar from "./components/Sidebar";
 import Home from "./components/Home";
 import Technologies from "./components/Technologies";
+import Projects from "./components/Projects";
 import PhoneSection from "./components/PhoneSection";
 import ChartSection from "./components/ChartSection";
 //import {translationsEn,translationsTr} from "./features/translations";
@@ -29,6 +30,7 @@ function App() {
       <Sidebar setActiveTheme={setActiveTheme} activeLang={activeLang} setActiveLang={setActiveLang} />
       <Home />
       <Technologies />
+      <Projects />
       <PhoneSection />
       <ChartSection />
     </ThemeProvider>

@@ -12,11 +12,11 @@ import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
 import { SongList } from "../../PageComponents/Sidebar/SongList";
 
 const Widget = styled("div")(({ theme }) => ({
-  padding: 5,
+  padding: 1,
   borderRadius: 16,
   width: 180,
   maxWidth: "100%",
-  margin: "5px",
+  marginLeft: "5px",
   position: "relative",
   zIndex: 1,
   backgroundColor:
@@ -86,7 +86,7 @@ export default function MusicPlayerSlider({ ishovered }) {
           sx={{
             width: "200px",
             overflow: "hidden",
-            marginTop: "20px",
+            
             height: "275px",
           }}
         >
@@ -97,10 +97,10 @@ export default function MusicPlayerSlider({ ishovered }) {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                height: "180px",
+                height: "140px",
               }}
               sx={{
-                height: "180px",
+                height: "140px",
                 width: "180px",
                 display: "flex",
                 flexDirection: "column",
@@ -149,12 +149,12 @@ export default function MusicPlayerSlider({ ishovered }) {
               >
                 {isPlaying ? (
                   <PauseRounded
-                    sx={{ fontSize: "3rem" }}
+                    sx={{ fontSize: "2rem" }}
                     htmlColor={mainIconColor}
                   />
                 ) : (
                   <PlayArrowRounded
-                    sx={{ fontSize: "3rem" }}
+                    sx={{ fontSize: "2rem" }}
                     htmlColor={mainIconColor}
                   />
                 )}

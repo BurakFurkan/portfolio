@@ -44,7 +44,8 @@ export const en={
         'Passion':'Passion',
         'Result Orientation':'Result Orientation',
         "Home":"Home",
-        "Charts":"Charts"
+        "Charts":"Charts",
+        "Projects":"Projects"
     }
 
 };
@@ -94,7 +95,8 @@ export const tr={
         'Passion':'Hırs',
         'Result Orientation':'Sonuç Odaklı Çalışma',
         "Home":"Anasayfa",
-        "Charts":"Grafikler"
+        "Charts":"Grafikler",
+        "Projects":"Projelerim"
     }
 
 };
