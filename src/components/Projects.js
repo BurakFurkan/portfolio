@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Carousel from "./PageComponents/Projects/Carousel";
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import {
   FoodMedia,
+  DashboardMedia,
   ShopMedia,
   MediaVideo,
 } from "./PageComponents/Projects/MediaWrapper";
 import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
+import {t} from 'i18next';
 
 function Projects() {
   const [isVideo, setIsVideo] = useState(true);
@@ -17,6 +20,7 @@ function Projects() {
 
   return (
     <Container name="projects">
+      <StyledH1>{t("MyProjects")}</StyledH1>
       <MainSection>
         {isVideo ? (
           <StyledVideo
@@ -33,6 +37,7 @@ function Projects() {
         )}
       </MainSection>
       <Car>
+      <StyledH2>Food App</StyledH2>
         <Carousel
           mediaArr={FoodMedia}
           direct={false}
@@ -43,6 +48,18 @@ function Projects() {
         />
       </Car>
       <Car>
+      <StyledH2>Admin Dashboard</StyledH2>
+        <Carousel
+          mediaArr={DashboardMedia}
+          direct={true}
+          setIsVideo={setIsVideo}
+          setVideoSrc={setVideoSrc}
+          setImgSrc={setImgSrc}
+          videoIndex={1}
+        />
+      </Car>
+      <Car>
+      <StyledH2>Shop App</StyledH2>
         <Carousel
           mediaArr={ShopMedia}
           direct={true}
@@ -52,13 +69,18 @@ function Projects() {
           videoIndex={1}
         />
       </Car>
+      <StyledLinks>
+          <StyledH2>Live Links of My Projects</StyledH2>
+          <a href="https://admin-dashboard-burakfurkan.vercel.app/" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Admin Dashboard</span></a>
+          <a href="https://bmartmimarlik.com.tr/" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Architecture Website</span></a>
+      </StyledLinks>
     </Container>
   );
 }
 
 const Container = styled.div`
-  height: 100vh;
-  padding: 10px 10px 20px 50px;
+  height: 160vh;
+  padding: 10px 10px 10px 50px;
   background-color: hsla(${(props) => props.theme.bg_color});
   background-image: ${(props) => props.theme.bg_image1},
     ${(props) => props.theme.bg_image2}, ${(props) => props.theme.bg_image3},
@@ -67,11 +89,22 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+
 
   @media (max-width: 1028px) {
+    height: 180vh
   }
 `;
+
+const StyledH1 = styled.h1`
+  text-align:center;
+  color: ${(props) => props.theme.text_color2};
+`
+const StyledH2=styled.h2`
+   color: ${(props) => props.theme.text_color2};
+   margin:0;
+   padding:0;
+`
 
 const MainSection = styled.div`
   flex: 4;
@@ -82,6 +115,7 @@ const MainSection = styled.div`
 const Car = styled.div`
   flex: 1;
   padding: 0.5rem;
+  position:relative;
 `;
 
 const StyledVideo = styled(Video)`
@@ -103,5 +137,26 @@ const StyledImg = styled.img`
     height: 380px;
   }
 `;
+
+const StyledLinks = styled.div`
+color: ${(props) => props.theme.text_color2};
+display:flex;
+flex-direction:column;
+
+  span{
+    display:flex;
+    justify-content:start;
+    align-items:start;
+  }
+
+ a{
+  color: ${(props) => props.theme.text_color2};
+    display:flex;
+    justify-content:start;
+    align-items:center;
+    gap:1rem;
+    text-decoration:none;
+ }
+`
 
 export default Projects;

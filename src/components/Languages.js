@@ -45,7 +45,8 @@ export const en={
         'Result Orientation':'Result Orientation',
         "Home":"Home",
         "Charts":"Charts",
-        "Projects":"Projects"
+        "Projects":"Projects",
+        "MyProjects":"My Projects"
     }
 
 };
@@ -96,7 +97,8 @@ export const tr={
         'Result Orientation':'Sonuç Odaklı Çalışma',
         "Home":"Anasayfa",
         "Charts":"Grafikler",
-        "Projects":"Projelerim"
+        "Projects":"Projelerim",
+        "MyProjects":"Projelerim"
     }
 
 };

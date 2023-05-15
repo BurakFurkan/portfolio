@@ -38,7 +38,7 @@ const BgAnimation = keyframes`
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height:100vh;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
