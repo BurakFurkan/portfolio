@@ -72,7 +72,7 @@ function Projects() {
       <StyledLinks>
           <StyledH2>Live Links of My Projects</StyledH2>
           <a href="https://admin-dashboard-burakfurkan.vercel.app/" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Admin Dashboard</span></a>
-          <a href="https://food-ji0wwfvqi-burakfurkan.vercel.app" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Food App</span></a>
+          <a href="https://react-food-app-burakfurkan.vercel.app/" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Food App</span></a>
           <a href="https://bmartmimarlik.com.tr/" rel="noopener noreferrer" target="_blank"><LanguageOutlinedIcon/><span> Architecture Website</span></a>
       </StyledLinks>
     </Container>
