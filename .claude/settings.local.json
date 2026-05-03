@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item package-lock.json -ErrorAction SilentlyContinue)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; npm start 2>&1 }; Start-Sleep -Seconds 12; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; npm start 2>&1 }; Start-Sleep -Seconds 14; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; npm start 2>&1 }; Start-Sleep -Seconds 10; Receive-Job $job; Stop-Job $job; Remove-Job $job)",
+      "PowerShell(if \\(!\\(Test-Path \"C:\\\\Users\\\\BfT\\\\.claude\\\\projects\\\\c--Users-BfT-Desktop-yazilim-my-github-portfolio\\\\memory\"\\)\\) { New-Item -ItemType Directory -Path \"C:\\\\Users\\\\BfT\\\\.claude\\\\projects\\\\c--Users-BfT-Desktop-yazilim-my-github-portfolio\\\\memory\" -Force })",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; $job = Start-Job -ScriptBlock { Set-Location \"c:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\"; npm start 2>&1 }; Start-Sleep -Seconds 8; $out = Receive-Job $job; Stop-Job $job; Remove-Job $job; $out)",
+      "WebFetch(domain:codepen.io)",
+      "WebFetch(domain:www.youtube.com)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(copy \"C:\\\\Users\\\\BfT\\\\Downloads\\\\germany_sphere_icon_64.png\" \"C:\\\\Users\\\\BfT\\\\Desktop\\\\yazilim\\\\my-github\\\\portfolio\\\\src\\\\assets\\\\germany-flag.png\")",
+      "Bash(npm uninstall:*)",
+      "Bash(ls node_modules/@splinetool/runtime/build/)",
+      "Bash(ls node_modules/@splinetool/runtime/)",
+      "Bash(grep -v \"//\")",
+      "Bash(node -e ':*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

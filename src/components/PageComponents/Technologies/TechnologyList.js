@@ -13,7 +13,7 @@ import nextjsIcon from "../../../assets/technologyIcons/nextjs.png";
 
 export const TechnologyList = [
   {
-    name: "Next.Js 13",
+    name: "Next.Js",
     src: nextjsIcon,
   },
   {
