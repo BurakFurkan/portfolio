@@ -9,6 +9,7 @@ import Sidebar from "./components/Sidebar";
 import FpsCounter from "./components/FpsCounter";
 import DevObserver from "./components/DevObserver";
 import FloatingMusicPlayer from "./components/FloatingMusicPlayer";
+import CursorFlow from "./components/CursorFlow";
 import Home from "./components/Home";
 import About from "./components/About";
 import Technologies from "./components/Technologies";
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <ThemeProvider theme={activeTheme}>
+      <CursorFlow />
       {devMode && <FpsCounter />}
       {devMode && <DevObserver />}
       <Sidebar
