@@ -1,5 +1,16 @@
 # 🚀 Portfolio Website Modernization (Claude.md)
 
+## 🔒 Push Kuralı
+
+Her `git push` işleminden önce:
+
+1. `npm run build` komutuyla production build al
+2. Build hata verirse hataları düzelt
+3. Düzeltilen dosyaları tekrar stage'e al ve commit'e ekle
+4. Build başarılı olduktan sonra push yap
+
+Bu adımları atlamadan uygula.
+
 ## 🎯 Goal
 
 Upgrade and refactor an existing portfolio website to be:
