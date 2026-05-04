@@ -13,37 +13,52 @@ const CONTACT = ["furkan_te", "\x40", "hotmail.com"].join("");
 /* ── keyframes ─────────────────────────────────────────────────────────────── */
 
 const glitch = keyframes`
-  1%  { transform: rotateX(10deg) skewX(90deg); }
-  2%  { transform: rotateX(0deg)  skewX(0deg);  }
-`;
-
-/* noise1/noise2: sadece ilk %18'de aktif, kalan %82 freeze — repaint minimized */
-const noise1 = keyframes`
-  0%   { clip-path: inset(0 0 100% 0); }
-  2%   { clip-path: inset(40px 0 60px 0); }
-  4%   { clip-path: inset(92px 0  5px 0); }
-  6%   { clip-path: inset(15px 0 81px 0); }
-  8%   { clip-path: inset(67px 0 31px 0); }
-  10%  { clip-path: inset( 4px 0 94px 0); }
-  12%  { clip-path: inset(55px 0 41px 0); }
-  14%  { clip-path: inset(78px 0 18px 0); }
-  16%  { clip-path: inset(28px 0 68px 0); }
-  18%  { clip-path: inset(0 0 100% 0); }
-  100% { clip-path: inset(0 0 100% 0); }
-`;
-
-const noise2 = keyframes`
-  0%   { clip-path: inset(0 0 100% 0); }
-  2%   { clip-path: inset(65px 0 28px 0); }
-  4%   { clip-path: inset(11px 0 86px 0); }
-  6%   { clip-path: inset(79px 0 18px 0); }
-  8%   { clip-path: inset(22px 0 74px 0); }
-  10%  { clip-path: inset(93px 0  5px 0); }
-  12%  { clip-path: inset(38px 0 57px 0); }
-  14%  { clip-path: inset( 5px 0 92px 0); }
-  16%  { clip-path: inset(68px 0 29px 0); }
-  18%  { clip-path: inset(0 0 100% 0); }
-  100% { clip-path: inset(0 0 100% 0); }
+  0%,
+  70%,
+  100% {
+    transform: translateX(0);
+    text-shadow: none;
+  }
+  72% {
+    transform: translateX(-3px);
+    text-shadow:
+       6px 0 #0ff,
+      -6px 0 #f00;
+  }
+  74% {
+    transform: translateX(-3px);
+    text-shadow:
+       6px 0 #0ff,
+      -6px 0 #f00;
+  }
+  78% {
+    transform: translateX(3px);
+    text-shadow:
+      -6px 0 #0ff,
+       6px 0 #f00;
+  }
+  80% {
+    transform: translateX(3px);
+    text-shadow:
+      -6px 0 #0ff,
+       6px 0 #f00;
+  }
+  84% {
+    transform: translateX(-2px);
+    text-shadow:
+       4px 0 #0ff,
+      -4px 0 #f00;
+  }
+  86% {
+    transform: translateX(-2px);
+    text-shadow:
+       4px 0 #0ff,
+      -4px 0 #f00;
+  }
+  94% {
+    transform: translateX(0);
+    text-shadow: none;
+  }
 `;
 
 const fudge = keyframes`
@@ -79,7 +94,7 @@ export default function Contact() {
 
           <GlitchWrap style={{ transform: "rotate(350deg)" }}>
             <GlitchGlow aria-hidden="true">{headlineText}</GlitchGlow>
-            <GlitchText data-text={headlineText}>{headlineText}</GlitchText>
+            <GlitchText>{headlineText}</GlitchText>
           </GlitchWrap>
 
           <Sub>{t("contact_sub")}</Sub>
@@ -104,7 +119,7 @@ export default function Contact() {
         </motion.div>
 
         <Footer>
-          <FooterText>© 2026 Burak Furkan Tenekeci</FooterText>
+          <FooterText>© 2022 Burak Furkan Tenekeci</FooterText>
         </Footer>
       </Inner>
     </Section>
@@ -203,33 +218,7 @@ const GlitchText = styled.h2`
   line-height: 1.05;
   color: ${(p) => p.theme.text_primary};
   position: relative;
-  animation: ${glitch} 2.5s 2.5s infinite;
-
-  &::before {
-    content: attr(data-text);
-    position: absolute;
-    left: -2px;
-    top: 0;
-    width: 100%;
-    color: ${(p) => p.theme.text_primary};
-    text-shadow: -5px 0 magenta;
-    will-change: clip-path;
-    animation: ${noise1} 4s linear infinite,
-               ${glitch} 2.5s 2.55s infinite;
-  }
-
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px;
-    top: 0;
-    width: 100%;
-    color: ${(p) => p.theme.text_primary};
-    text-shadow: -5px 0 ${(p) => p.theme.accent};
-    will-change: clip-path;
-    animation: ${noise2} 4s linear infinite 0.5s,
-               ${glitch} 2.5s 2.5s infinite;
-  }
+  animation: ${glitch} 2.2s ease-in-out infinite;
 `;
 
 const Sub = styled.p`

@@ -73,6 +73,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
+              style={{ height: "100%" }}
             >
               <ServiceCard>
                 <ServiceNum>{s.num}</ServiceNum>
@@ -215,6 +216,8 @@ const ServiceCard = styled.div`
   border: 1px solid ${(p) => p.theme.border_color};
   border-radius: 8px;
   background: ${(p) => p.theme.bg_card};
+  height: 100%;
+  box-sizing: border-box;
   transition: border-color 0.2s ease, background 0.2s ease;
 
   &:hover {
