@@ -7,6 +7,7 @@ import { theme1, theme2 } from "./components/Theme";
 import { en, tr, de } from "./components/Languages";
 import Sidebar from "./components/Sidebar";
 import FpsCounter from "./components/FpsCounter";
+import DevObserver from "./components/DevObserver";
 import FloatingMusicPlayer from "./components/FloatingMusicPlayer";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -27,6 +28,7 @@ i18n.use(initReactI18next).init({
 function App() {
   const [activeTheme, setActiveTheme] = useState(theme1);
   const [activeLang, setActiveLang] = useState("en");
+  const [devMode, setDevMode] = useState(false);
 
   const handleLangChange = (lang) => {
     setActiveLang(lang);
@@ -35,11 +37,14 @@ function App() {
 
   return (
     <ThemeProvider theme={activeTheme}>
-      {import.meta.env.DEV && <FpsCounter />}
+      {devMode && <FpsCounter />}
+      {devMode && <DevObserver />}
       <Sidebar
         setActiveTheme={setActiveTheme}
         activeLang={activeLang}
         setActiveLang={handleLangChange}
+        devMode={devMode}
+        setDevMode={setDevMode}
       />
       <Main>
         <Home />

@@ -11,6 +11,7 @@ import PaletteOutlinedIcon from "@mui/icons-material/PaletteOutlined";
 import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
+import CodeOutlinedIcon from "@mui/icons-material/CodeOutlined";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-scroll";
 import ThemePicker from "./PageComponents/Sidebar/ThemePicker";
@@ -26,7 +27,7 @@ const navItems = [
   { to: "contact", icon: <MailOutlinedIcon fontSize="small" />, labelKey: null, label: "Contact" },
 ];
 
-const Sidebar = ({ setActiveTheme, setActiveLang }) => {
+const Sidebar = ({ setActiveTheme, setActiveLang, devMode, setDevMode }) => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [themeNumber, setThemeNumber] = useState(1);
@@ -130,6 +131,18 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
               </UtilPanel>
             )}
           </UtilRow>
+
+          <UtilRow>
+            <DevToggleBtn
+              onClick={() => setDevMode((v) => !v)}
+              $active={devMode}
+              title="Developer Mode"
+            >
+              <CodeOutlinedIcon fontSize="small" />
+              {isOpen && <UtilLabel>Developer</UtilLabel>}
+              {isOpen && <DevTogglePill $on={devMode}>{devMode ? "ON" : "OFF"}</DevTogglePill>}
+            </DevToggleBtn>
+          </UtilRow>
         </Utilities>
       </DesktopSidebar>
 
@@ -192,6 +205,16 @@ const Sidebar = ({ setActiveTheme, setActiveLang }) => {
                 lang={lang}
                 setLang={setLang}
               />
+            </SheetSection>
+
+            <SheetSection>
+              <SheetSectionTitle>Developer</SheetSectionTitle>
+              <DevCheckboxRow onClick={() => setDevMode((v) => !v)}>
+                <DevCheckbox $on={devMode}>
+                  {devMode && <DevCheckMark />}
+                </DevCheckbox>
+                <DevCheckLabel>Dev Mode <DevCheckHint>(FPS + Observer)</DevCheckHint></DevCheckLabel>
+              </DevCheckboxRow>
             </SheetSection>
           </MobileSheet>
         </MobileSheetOverlay>
@@ -504,6 +527,81 @@ const CloseBtn = styled.button`
 
 const SheetSection = styled.div`
   margin-bottom: 20px;
+`;
+
+const DevToggleBtn = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 6px;
+  border: none;
+  background: ${(p) => (p.$active ? p.theme.accent_dim : "transparent")};
+  color: ${(p) => (p.$active ? p.theme.accent : p.theme.text_secondary)};
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: ${(p) => p.theme.sidebar_item_hover};
+    color: ${(p) => p.theme.text_primary};
+  }
+`;
+
+const DevTogglePill = styled.span`
+  margin-left: auto;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: ${(p) => (p.$on ? p.theme.accent : "rgba(255,255,255,0.08)")};
+  color: ${(p) => (p.$on ? "#000" : p.theme.text_secondary)};
+  transition: background 0.2s ease, color 0.2s ease;
+`;
+
+const DevCheckboxRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px 2px;
+  user-select: none;
+`;
+
+const DevCheckbox = styled.div`
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid ${(p) => (p.$on ? p.theme.accent : p.theme.text_secondary)};
+  background: ${(p) => (p.$on ? p.theme.accent : "transparent")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+`;
+
+const DevCheckMark = styled.div`
+  width: 5px;
+  height: 9px;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  transform: rotate(45deg) translate(-1px, -1px);
+`;
+
+const DevCheckLabel = styled.span`
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: ${(p) => p.theme.text_primary};
+`;
+
+const DevCheckHint = styled.span`
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: ${(p) => p.theme.text_secondary};
 `;
 
 const SheetSectionTitle = styled.p`
