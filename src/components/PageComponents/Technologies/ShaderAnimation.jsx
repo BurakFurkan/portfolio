@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 import * as THREE from "three";
 
@@ -10,6 +10,7 @@ const FRAGMENT = `
   precision highp float;
   uniform vec2 resolution;
   uniform float time;
+  uniform float isLight;
 
   void main(void) {
     vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
@@ -25,12 +26,21 @@ const FRAGMENT = `
         );
       }
     }
-    gl_FragColor = vec4(color[0], color[1], color[2], 1.0);
+    vec3 bg = vec3(isLight);
+    vec3 final = mix(color, vec3(1.0) - color, isLight) + bg * (1.0 - clamp(length(color) * 2.0, 0.0, 1.0));
+    gl_FragColor = vec4(final, 1.0);
   }
 `;
 
-function ShaderAnimation() {
+function ShaderAnimation({ isLight = false }) {
   const containerRef = useRef(null);
+  const uniformsRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (uniformsRef.current) {
+      uniformsRef.current.isLight.value = isLight ? 1.0 : 0.0;
+    }
+  }, [isLight]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -43,7 +53,9 @@ function ShaderAnimation() {
     const uniforms = {
       time: { value: 1.0 },
       resolution: { value: new THREE.Vector2() },
+      isLight: { value: isLight ? 1.0 : 0.0 },
     };
+    uniformsRef.current = uniforms;
     const material = new THREE.ShaderMaterial({ uniforms, vertexShader: VERTEX, fragmentShader: FRAGMENT });
     scene.add(new THREE.Mesh(geometry, material));
 
@@ -66,7 +78,7 @@ function ShaderAnimation() {
     const animate = () => {
       if (!running) return;
       rafId = requestAnimationFrame(animate);
-      uniforms.time.value += 0.05;
+      uniforms.time.value += 0.135;
       renderer.render(scene, camera);
     };
 
@@ -102,6 +114,7 @@ function ShaderAnimation() {
 const Wrap = styled.div`
   position: absolute;
   inset: 0;
+  z-index: 0;
 
   canvas {
     display: block;

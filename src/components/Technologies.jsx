@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import TechnoItem from "./PageComponents/Technologies/TechnoItem";
 import { TechnologyList } from "./PageComponents/Technologies/TechnologyList";
-import ShaderAnimation from "./PageComponents/Technologies/ShaderAnimation";
 
 const Technologies = () => {
   const { t } = useTranslation();
@@ -24,9 +23,6 @@ const Technologies = () => {
 
   return (
     <Section name="techno" id="techno">
-      <ShaderAnimation />
-      <Overlay />
-
       <Content>
         <Header
           as={motion.div}
@@ -53,19 +49,13 @@ const Technologies = () => {
 
 const Section = styled.section`
   position: relative;
+  z-index: 2;
   overflow: hidden;
+  background: transparent;
   padding: 120px 64px;
-
   @media (max-width: 768px) {
     padding: 80px 24px;
   }
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.52);
-  z-index: 1;
 `;
 
 const Content = styled.div`

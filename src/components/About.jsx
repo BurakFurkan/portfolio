@@ -89,9 +89,10 @@ export default function About() {
 }
 
 const Section = styled.section`
-  background-color: ${(p) => p.theme.bg_surface};
+  position: relative;
+  z-index: 2;
+  background: transparent;
   padding: 120px 64px;
-
   @media (max-width: 768px) {
     padding: 80px 24px 80px 24px;
   }

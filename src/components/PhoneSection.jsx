@@ -30,18 +30,37 @@ const PhoneSection = () => {
             <Headline>{t("Do you want this in your app?")}</Headline>
           </div>
 
-          <TabBar>
-            {tabs.map((tab) => (
-              <TabBtn
-                key={tab.id}
-                $active={activeTab === tab.id}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-                {activeTab === tab.id && <TabIndicator layoutId="tab-indicator" />}
-              </TabBtn>
-            ))}
-          </TabBar>
+          <TabWrapper>
+            <SwitchHint>{t("switch_view_hint") || "Switch view"}</SwitchHint>
+            <TabBar>
+              {tabs.map((tab) => (
+                <TabBtn
+                  key={tab.id}
+                  $active={activeTab === tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {activeTab === tab.id && <TabIndicator layoutId="tab-indicator" />}
+                  <TabIcon>
+                    {tab.id === "robot" ? (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="11" width="18" height="10" rx="2"/>
+                        <circle cx="12" cy="5" r="2"/>
+                        <line x1="12" y1="7" x2="12" y2="11"/>
+                        <line x1="8" y1="16" x2="8" y2="16"/>
+                        <line x1="16" y1="16" x2="16" y2="16"/>
+                      </svg>
+                    ) : (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2"/>
+                        <line x1="12" y1="18" x2="12.01" y2="18"/>
+                      </svg>
+                    )}
+                  </TabIcon>
+                  {tab.label}
+                </TabBtn>
+              ))}
+            </TabBar>
+          </TabWrapper>
         </TopRow>
 
         <TabPanels>
@@ -74,9 +93,10 @@ const PhoneSection = () => {
 };
 
 const Section = styled.section`
-  background-color: ${(p) => p.theme.bg_surface};
+  position: relative;
+  z-index: 2;
+  background: transparent;
   padding: 120px 64px;
-
   @media (max-width: 900px) {
     padding: 80px 24px;
   }
@@ -114,20 +134,40 @@ const Headline = styled.h2`
   line-height: 1.2;
 `;
 
+const TabWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+`;
+
+const SwitchHint = styled.span`
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${(p) => p.theme.text_muted};
+  opacity: 0.7;
+`;
+
 const TabBar = styled.div`
   display: flex;
   gap: 4px;
   background: ${(p) => p.theme.bg_card};
-  border: 1px solid ${(p) => p.theme.border_color};
-  border-radius: 8px;
+  border: 1px solid ${(p) => p.theme.accent_glow};
+  border-radius: 10px;
   padding: 4px;
+  box-shadow: 0 0 12px ${(p) => p.theme.accent_glow};
 `;
 
 const TabBtn = styled.button`
   position: relative;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border: 1px solid ${(p) => (p.$active ? p.theme.accent + "55" : "transparent")};
+  border-radius: 7px;
   background: transparent;
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -144,12 +184,17 @@ const TabBtn = styled.button`
   }
 `;
 
+const TabIcon = styled.span`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+`;
+
 const TabIndicator = styled(motion.div)`
   position: absolute;
   inset: 0;
-  border-radius: 5px;
+  border-radius: 7px;
   background: ${(p) => p.theme.accent_dim};
-  border: 1px solid ${(p) => p.theme.accent_glow};
   z-index: -1;
 `;
 

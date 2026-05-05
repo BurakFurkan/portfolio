@@ -15,6 +15,7 @@ import About from "./components/About";
 import Technologies from "./components/Technologies";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import ShaderAnimation from "./components/PageComponents/Technologies/ShaderAnimation";
 
 const PhoneSection = lazy(() => import("./components/PhoneSection"));
 const ChartSection = lazy(() => import("./components/ChartSection"));
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <ThemeProvider theme={activeTheme}>
-      <CursorFlow />
+      <CursorFlow theme={activeTheme} />
       {devMode && <FpsCounter />}
       {devMode && <DevObserver />}
       <Sidebar
@@ -50,19 +51,35 @@ function App() {
       />
       <Main>
         <Home />
-        <About />
-        <Technologies />
-        <Projects />
-        <Suspense fallback={<div style={{ height: "100vh", background: activeTheme.bg_primary }} />}>
-          <PhoneSection />
-          <ChartSection />
-        </Suspense>
+        <MiddleSections>
+          <ShaderAnimation isLight={activeTheme.themeNo === 2} />
+          <ShaderOverlay $isLight={activeTheme.themeNo === 2} />
+          <About />
+          <Technologies />
+          <Projects />
+          <Suspense fallback={<div style={{ height: "100vh" }} />}>
+            <PhoneSection />
+            <ChartSection />
+          </Suspense>
+        </MiddleSections>
         <Contact />
       </Main>
       <FloatingMusicPlayer />
     </ThemeProvider>
   );
 }
+
+const MiddleSections = styled.div`
+  position: relative;
+`;
+
+const ShaderOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: ${({ $isLight }) => $isLight ? "rgba(255, 255, 255, 0.60)" : "rgba(0, 0, 0, 0.56)"};
+  pointer-events: none;
+  z-index: 1;
+`;
 
 const Main = styled.main`
   margin-left: var(--sidebar-w, 56px);

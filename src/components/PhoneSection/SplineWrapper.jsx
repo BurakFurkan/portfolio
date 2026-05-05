@@ -99,6 +99,7 @@ const Wrap = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  background: #0d0d0f;
 `;
 
 const Overlay = styled.div`
