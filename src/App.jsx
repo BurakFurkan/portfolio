@@ -27,6 +27,8 @@ i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
 });
 
+document.documentElement.lang = "en";
+
 function App() {
   const [activeTheme, setActiveTheme] = useState(theme1);
   const [activeLang, setActiveLang] = useState("en");
@@ -35,6 +37,7 @@ function App() {
   const handleLangChange = (lang) => {
     setActiveLang(lang);
     i18n.changeLanguage(lang);
+    document.documentElement.lang = lang;
   };
 
   return (

@@ -14,41 +14,45 @@ import {
 const projectsData = [
   {
     id: 1,
+    active: true,
     title: "Food App",
-    desc: "A full-featured React food ordering application with cart management, product filtering, and fully responsive layout.",
+    descKey: "project_food_desc",
     image: FoodMedia[0],
     tags: ["React", "Redux", "Styled Components", "REST API"],
-    liveUrl: "https://react-food-app-git-master-burakfurkan.vercel.app/",
-    githubUrl: "https://github.com/BurakFurkan",
+    liveUrl: "https://bft-food-app.vercel.app/",
+    githubUrl: "https://github.com/BurakFurkan/react-food-app",
     color: "#FF6B35",
     images: [FoodMedia[0], FoodMedia[1], FoodMedia[2], FoodMedia[3]],
   },
   {
     id: 2,
+    active: true,
     title: "Admin Dashboard",
-    desc: "A comprehensive bank admin dashboard with analytics charts, data tables, and multi-level user management.",
+    descKey: "project_dashboard_desc",
     image: DashboardMedia[0],
     tags: ["React", "Chart.js", "Material UI", "Responsive"],
     liveUrl: "https://admin-dashboard-burakfurkan.vercel.app/",
-    githubUrl: "https://github.com/BurakFurkan",
+    githubUrl: "https://github.com/BurakFurkan/admin-dashboard",
     color: "#4A8BFF",
     images: [DashboardMedia[0], DashboardMedia[1], DashboardMedia[2], DashboardMedia[3]],
   },
   {
     id: 3,
+    active: true,
     title: "Shop App",
-    desc: "A modern e-commerce shopping application with product filtering, cart functionality, and smooth checkout flow.",
+    descKey: "project_shop_desc",
     image: ShopMedia[0],
     tags: ["React", "Redux Toolkit", "Styled Components", "E-Commerce"],
-    liveUrl: "https://github.com/BurakFurkan",
-    githubUrl: "https://github.com/BurakFurkan",
+    liveUrl: "",
+    githubUrl: "https://github.com/BurakFurkan/shopping-app",
     color: "#B5FF00",
     images: [ShopMedia[0], ShopMedia[1], ShopMedia[2]],
   },
   {
     id: 4,
+    active: false,
     title: "Architecture Site",
-    desc: "A professional architecture firm website with project showcases, team section, and optimized performance.",
+    descKey: "project_arch_desc",
     image: null,
     tags: ["React", "Next.js", "Vercel", "SEO"],
     liveUrl: "https://bmartmimarlik.com.tr/",
@@ -78,7 +82,7 @@ export default function Projects() {
         </Header>
 
         <Grid>
-          {projectsData.map((project, i) => (
+          {projectsData.filter((p) => p.active).map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 32 }}
@@ -101,7 +105,7 @@ export default function Projects() {
 
                 <CardBody>
                   <CardTitle>{project.title}</CardTitle>
-                  <CardDesc>{project.desc}</CardDesc>
+                  <CardDesc>{t(project.descKey)}</CardDesc>
                   <TagRow>
                     {project.tags.map((tag) => (
                       <Tag key={tag}>{tag}</Tag>
@@ -157,7 +161,7 @@ export default function Projects() {
               )}
 
               <ModalBody>
-                <p>{selected.desc}</p>
+                <p>{t(selected.descKey)}</p>
                 <TagRow>
                   {selected.tags.map((tag) => (
                     <Tag key={tag}>{tag}</Tag>
